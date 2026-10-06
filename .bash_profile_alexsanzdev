@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-SCRIPT_DATE=2026-10-06
-
 # clear screen
 clear
 
@@ -120,7 +118,6 @@ function title()
   printf "\033]0;%s\007" "$1"
 }
 
-unset SCRIPT_DATE
 unset HISTSIZE
 unset MACOS
 unset SCRIPTS_MOUNT_INFO
