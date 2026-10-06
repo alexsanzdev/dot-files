@@ -7,16 +7,6 @@ clear
 
 if [[ "$OSTYPE" == *darwin* ]]; then
 	MACOS=true
-        OS_NAME="Mac OS X"
-        OS_VERSION="`sw_vers -productVersion`"
-elif [[ "$OSTYPE" == *linux* && -e /etc/centos-release  ]]; then
-	CENTOS=true
-        OS_NAME="Linux - CentOS"
-        OS_VERSION="`cat /etc/centos-release`"
-elif [[ "$OSTYPE" == *linux* && -e /etc/lsb-release  ]]; then
-        UBUNTU=true
-        OS_NAME="Linux - Ubuntu"
-        OS_VERSION="`grep DISTRIB_DESCRIPTION /etc/lsb-release | awk -F'"' '{print $2}'`"	
 fi
 
 echo ""
@@ -28,8 +18,6 @@ echo "   "$(hostname -s | tr '[:lower:]' '[:upper:]')
 
 
 echo ""
-echo -e "OS: $OS_NAME"
-echo -e "OS VERSION: $OS_VERSION"
 echo ________________________________________________________________________________
 
 echo ""
@@ -146,9 +134,5 @@ function title()
 unset SCRIPT_DATE
 unset HISTSIZE
 unset MACOS
-unset CENTOS
-unset UBUNTU
-unset OS_NAME
-unset OS_VERSION
 unset SCRIPTS_MOUNT_INFO
 unset SSHD_CONFIG
