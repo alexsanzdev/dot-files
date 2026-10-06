@@ -21,16 +21,12 @@ else
 	echo "Unsupported OS"
 fi
 
-HOST=`hostname -s`
-
-HOST_UPPERCASE=$(echo $HOST | tr '[:lower:]' '[:upper:]')
-
 echo ""
 echo "Common profile version: "$SCRIPT_DATE
 echo ________________________________________________________________________________
 
 echo ""
-echo "   "$HOST_UPPERCASE
+echo "   "$(hostname -s | tr '[:lower:]' '[:upper:]')
 
 
 echo ""
@@ -154,8 +150,6 @@ unset HISTSIZE
 unset MACOS
 unset CENTOS
 unset UBUNTU
-unset HOST_UPPERCASE
-unset HOST
 unset OS_NAME
 unset OS_VERSION
 unset SCRIPTS_MOUNT_INFO
