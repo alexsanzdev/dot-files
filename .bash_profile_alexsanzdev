@@ -17,8 +17,6 @@ elif [[ "$OSTYPE" == *linux* && -e /etc/lsb-release  ]]; then
         UBUNTU=true
         OS_NAME="Linux - Ubuntu"
         OS_VERSION="`grep DISTRIB_DESCRIPTION /etc/lsb-release | awk -F'"' '{print $2}'`"	
-else
-	echo "Unsupported OS"
 fi
 
 echo ""
