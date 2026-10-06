@@ -5,22 +5,10 @@ SCRIPT_DATE=2026-10-06
 # clear screen
 clear
 
-if [[ "$OSTYPE" == *solaris* ]]; then
-	SOLARIS=true
-        OS_NAME="Solaris"
-	OS_VERSION="`uname -v`"
-elif [[ "$OSTYPE" == *freebsd* ]]; then
-	FREEBSD=true
-        OS_NAME="FreeBSD"
-        OS_VERSION="`sysctl -n kern.osrelease kern.ostype | head -1`"
-elif [[ "$OSTYPE" == *darwin* ]]; then
+if [[ "$OSTYPE" == *darwin* ]]; then
 	MACOS=true
         OS_NAME="Mac OS X"
         OS_VERSION="`sw_vers -productVersion`"
-elif [[ "$OSTYPE" == *linux* && "$LD_LIBRARY_PATH" == *vmware/vma*  ]]; then
-        VSPHERE_VMA=true
-	OS_NAME="Linux - vSphere Management Assistant\n    `head -1 /etc/SuSE-release`"
-	OS_VERSION="`head -1 /etc/vma-release`"
 elif [[ "$OSTYPE" == *linux* && -e /etc/centos-release  ]]; then
 	CENTOS=true
         OS_NAME="Linux - CentOS"
@@ -33,11 +21,7 @@ else
 	echo "Unsupported OS"
 fi
 
-if [[ "$SOLARIS" ]]; then
-        HOST=`hostname`
-else
-	HOST=`hostname -s`
-fi
+HOST=`hostname -s`
 
 HOST_UPPERCASE=$(echo $HOST | tr '[:lower:]' '[:upper:]')
 
@@ -73,11 +57,7 @@ else
         PS1='\[\033[0m\]\[\033[34m\]\h \[\033[2;90m\]\D{%a %T} `if [[ "$?" == 0 ]]; then echo -e "\e[32m\]$?"; else echo -e "\e[0;31m\]$?"; fi;` \[\033[2;34m\]\w \[\033[00m\] \n\[\033[1;32m\]\u\[\033[00m\] \[\033[1;32m\]\$ \[\033[00m\]'
 fi
 
-if [[ "$VSPHERE_VMA" ]]; then
-	typeset -x PS1=$PS1
-else
-	typeset -rx PS1=$PS1
-fi
+typeset -rx PS1=$PS1
 
 # Shell options
 shopt -s histappend &> /dev/null
@@ -89,7 +69,6 @@ alias lf='ls -p | grep -v /'
 alias lt='ls -tr'
 alias tree='tree -C'
 alias df='df -H'
-alias swapinfo='swapinfo -h'
 alias be=become
 alias beep='printf "\a"'
 alias grep='grep --color=auto'
@@ -172,10 +151,7 @@ function title()
 
 unset SCRIPT_DATE
 unset HISTSIZE
-unset SOLARIS
 unset MACOS
-unset FREEBSD
-unset VSPHERE_VMA
 unset CENTOS
 unset UBUNTU
 unset HOST_UPPERCASE
