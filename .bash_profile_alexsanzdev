@@ -10,17 +10,6 @@ if [[ "$OSTYPE" == *darwin* ]]; then
 fi
 
 echo ""
-echo "Common profile version: "$SCRIPT_DATE
-echo ________________________________________________________________________________
-
-echo ""
-echo "   "$(hostname -s | tr '[:lower:]' '[:upper:]')
-
-
-echo ""
-echo ________________________________________________________________________________
-
-echo ""
 echo "Welcome "`whoami`!
 echo ""
 
