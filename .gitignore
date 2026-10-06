@@ -1,0 +1,11 @@
+/.idea
+/*.iml
+node_modules
+npm-debug.log
+.DS_Store
+/tmp
+/.ai
+/.claude
+/CLAUDE.md
+.env
+.env.*
